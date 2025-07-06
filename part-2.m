@@ -9,7 +9,7 @@ delta = 0.05;           % step steer input (rad)
 
 % State-space matrices
 A = [-(Cf+Cr)/(m*u), (-a*Cf + b*Cr)/(m*u) - u;
-     (-a*Cf - b*Cr)/(Iz*u), -(a^2*Cf + b^2*Cr)/(Iz*u)];
+    - (a*Cf - b*Cr)/(Iz*u), -(a^2*Cf + b^2*Cr)/(Iz*u)];
 
 B = [Cf/m;
      a*Cf/Iz];
