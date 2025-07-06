@@ -5,7 +5,7 @@ Cf = 25000;             % front cornering stiffness (N/rad)
 Cr = 21000;             % rear cornering stiffness (N/rad)
 Iz = 2420;              % yaw inertia (kg.m^2)
 u = 75 * 1000 / 3600;   % longitudinal velocity (m/s)
-delta = 0.05;           % step steer input (rad)
+deltat = 0.1;           % step steer input (rad)
 
 % State-space matrices
 A = [-(Cf+Cr)/(m*u), (-a*Cf + b*Cr)/(m*u) - u;
@@ -13,3 +13,6 @@ A = [-(Cf+Cr)/(m*u), (-a*Cf + b*Cr)/(m*u) - u;
 
 B = [Cf/m;
      a*Cf/Iz];
+
+ dt = 0.1
+ t_vec =  0:dt:15
