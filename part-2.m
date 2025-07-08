@@ -50,9 +50,9 @@ grid on;
 
 % Plot Yaw Angle
 figure;
-plot(t, x_euler(2,:), 'r', 'LineWidth', 1.5, 'DisplayName', 'Euler yaw angle');
+plot(t, x_euler(2,:), 'r', 'LineWidth', 1, 'DisplayName', 'Euler yaw angle');
 hold on;
-plot(t, x_rk4(2,:), 'b', 'LineWidth', 1.5, 'DisplayName', 'RK4 yaw angle');
+plot(t, x_rk4(2,:), 'b', 'LineWidth', 1, 'DisplayName', 'RK4 yaw angle');
 xlabel('Time (s)');
 ylabel('Yaw Angle (rad)');
 title('Yaw Angle Response');
