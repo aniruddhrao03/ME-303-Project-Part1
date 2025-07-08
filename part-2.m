@@ -45,7 +45,8 @@ plot(t, x_rk4(1,:), 'b', 'LineWidth', 1, 'DisplayName', 'RK4 v_y'); %RK4 Plot
 xlabel('Time (s)');
 ylabel('Lateral Velocity (m/s)');
 title('Lateral Velocity Response');
-legend; grid on;
+legend; 
+grid on;
 
 % Plot Yaw Angle
 figure;
@@ -55,4 +56,5 @@ plot(t, x_rk4(2,:), 'b', 'LineWidth', 1.5, 'DisplayName', 'RK4 yaw angle');
 xlabel('Time (s)');
 ylabel('Yaw Angle (rad)');
 title('Yaw Angle Response');
-legend; grid on;
+legend;
+grid on;
