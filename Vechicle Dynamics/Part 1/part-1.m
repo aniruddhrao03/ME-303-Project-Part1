@@ -72,7 +72,8 @@ f = @(x, y) y;
     title('Forward Euler Approximations for dy/dx = y');
     grid on;
 
-%% Check using ode45 function (Given from Assignment)
+% Part 1.5: Verifying answers 
+% Check using ode45 function (Given from Assignment)
     odefun = @(x, y) y;
     xspan = [0 5];
     [x, y] = ode45(odefun, xspan, y0);
