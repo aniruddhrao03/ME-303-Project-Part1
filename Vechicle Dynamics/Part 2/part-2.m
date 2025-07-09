@@ -15,7 +15,7 @@ A = [-(Cf + Cr)/(m*u), (-a*Cf + b*Cr)/(m*u) - u; -(a*Cf - b*Cr)/(Iz*u), -(a^2*Cf
 B = [Cf/m; a*Cf/Iz];
 
 % Time setup
-h = 0.01;
+h = 0.1;
 t = 0:h:5;
 N = length(t);
 
@@ -112,6 +112,6 @@ hold on;
 loglog(dt_vec, rk4_err, 'b', 'DisplayName', 'RK4 Error');
 xlabel('Time (s)');
 ylabel('Error');
-title('Grid Independence Check: Error Analysis');
+title('Grid Independence Check');
 legend;
 grid on;
