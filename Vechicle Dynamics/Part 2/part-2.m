@@ -107,8 +107,11 @@ rk4_err   = abs(rk4_final   - rk4_final(end));
 
 % Grid Independence Log-log plot
 figure;
-loglog(dt_vec, euler_err, 'r'); 
-loglog(dt_vec, rk4_err,   'b');
-xlabel('\Deltat'); ylabel('Error relative to finest grid');
-title('Log-Log Grid Independence Check');
-legend('Euler', 'RK4'); grid on;
+loglog(dt_vec, euler_err, 'r', 'DisplayName', 'Euler Error');
+hold on;
+loglog(dt_vec, rk4_err, 'b', 'DisplayName', 'RK4 Error');
+xlabel('Time Step (s)');
+ylabel('Error Norm');
+title('Grid Independence Check: Error Analysis');
+legend;
+grid on;
