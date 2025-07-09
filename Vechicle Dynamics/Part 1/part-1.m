@@ -3,7 +3,7 @@ clear; clc; close all;
 % Define ODE & intialize parameters
 f = @(x, y) y;
 
-% Part 3: Plot solution from part 1 (y = e^x)
+% Part 1.3: Plot solution from part 1 (y = e^x)
     x = linspace(0, 5, 100); % plotting 100 points between x = 0 and x = 5    
     y_exact = exp(x);
     
@@ -14,7 +14,7 @@ f = @(x, y) y;
     ylabel('y');
     grid on; % Adding a grid for clarity
 
-% Part 3: Plot solution from part 2 (Power Series)
+% Part 1.3: Plot solution from part 2 (Power Series)
     N = 100; % Number of terms in the series
     a = zeros(1, N); % defining an array to hold all coefficients
 
@@ -39,7 +39,7 @@ f = @(x, y) y;
     ylabel('y(x)');
     grid on;
 
-% Part 4: Forward Euler
+% Part 1.4: Forward Euler
     % Define step sizes and colors
     step_sizes = [0.1, 0.05, 0.001];
     colours = ['r', 'g', 'b'];
