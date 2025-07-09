@@ -39,9 +39,9 @@ end
 
 %Plot Lateral Velocity
 figure;
-plot(t, x_euler(1,:), 'r', 'LineWidth', 1, 'DisplayName', 'Euler v_y'); %Euler Plot
+plot(t, x_euler(1,:), 'r', 'DisplayName', 'Euler v_y'); %Euler Plot
 hold on;
-plot(t, x_rk4(1,:), 'b', 'LineWidth', 1, 'DisplayName', 'RK4 v_y'); %RK4 Plot
+plot(t, x_rk4(1,:), 'b', 'DisplayName', 'RK4 v_y'); %RK4 Plot
 xlabel('Time (s)');
 ylabel('Lateral Velocity (m/s)');
 title('Lateral Velocity Response');
@@ -50,11 +50,19 @@ grid on;
 
 % Plot Yaw Angle
 figure;
-plot(t, x_euler(2,:), 'r', 'LineWidth', 1, 'DisplayName', 'Euler yaw angle');
+plot(t, x_euler(2,:), 'r', 'DisplayName', 'Euler yaw angle');
 hold on;
-plot(t, x_rk4(2,:), 'b', 'LineWidth', 1, 'DisplayName', 'RK4 yaw angle');
+plot(t, x_rk4(2,:), 'b','DisplayName', 'RK4 yaw angle');
 xlabel('Time (s)');
 ylabel('Yaw Angle (rad)');
 title('Yaw Angle Response');
 legend;
 grid on;
+
+%Grid Independance Check
+
+dt_vec = [0.1, 0.05, 0.025, 0.0125, 0.0125/2];  % Grid spacing
+euler_final = zeros(size(dt_vec));
+rk4_final   = zeros(size(dt_vec));
+
+
