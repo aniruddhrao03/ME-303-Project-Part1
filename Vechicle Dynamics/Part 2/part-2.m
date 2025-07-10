@@ -39,23 +39,23 @@ end
 
 %Plot Lateral Velocity
 figure;
-plot(t, x_euler(1,:), 'r', 'DisplayName', 'Euler v_y'); %Euler Plot
+plot(t, x_euler(1,:), 'r', 'DisplayName', 'Euler lateral velocity'); %Euler Plot
 hold on;
-plot(t, x_rk4(1,:), 'b', 'DisplayName', 'RK4 v_y'); %RK4 Plot
+plot(t, x_rk4(1,:), 'b', 'DisplayName', 'RK4 lateral velocity'); %RK4 Plot
 xlabel('Time (s)');
 ylabel('Lateral Velocity (m/s)');
 title('Lateral Velocity Response');
 legend; 
 grid on;
 
-% Plot Yaw Angle
+% Plot Yaw Rate
 figure;
-plot(t, x_euler(2,:), 'r', 'DisplayName', 'Euler yaw angle');
+plot(t, x_euler(2,:), 'r', 'DisplayName', 'Euler yaw rate');
 hold on;
-plot(t, x_rk4(2,:), 'b','DisplayName', 'RK4 yaw angle');
+plot(t, x_rk4(2,:), 'b','DisplayName', 'RK4 yaw rate');
 xlabel('Time (s)');
-ylabel('Yaw Angle (rad)');
-title('Yaw Angle Response');
+ylabel('Yaw rate (rad/s)');
+title('Yaw rate Response');
 legend;
 grid on;
 
