@@ -1,1 +1,1 @@
-# ME-303-Project-Part1
+# ME-303-Project-Vehicle Dynamics
