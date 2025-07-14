@@ -39,5 +39,5 @@ end
 % Legend
 legend('\Deltax = 0.1', '\Deltax = 0.05', '\Deltax = 0.001');
 xlabel('x'); ylabel('y');
-title('Forward Euler Approximations for dy/dx = y');
+title('Forward Euler Approximations');
 grid on;
