@@ -141,9 +141,9 @@ end
 figure;
 loglog(dt_vec, euler_err, 'r', 'DisplayName', 'Euler Error');
 hold on;
-loglog(dt_vec, rk4_err, 'b', ' DisplayName', 'RK4 Error');
+loglog(dt_vec, rk4_err, 'b', 'DisplayName', 'RK4 Error');
 xlabel('Time (s)');
 ylabel('Error');
-title('Grid Independence Check Euler vs RK4');
+title('Grid Independence Check of Euler and RK4');
 legend;
 grid on;
