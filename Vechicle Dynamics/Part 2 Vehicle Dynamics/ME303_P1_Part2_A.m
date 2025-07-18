@@ -66,6 +66,22 @@ grid on;
 % Time intervals reduced by half each time 
 dt_vec = [0.1, 0.05, 0.025, 0.0125, 0.00625, 0.003125, 0.0015625, 0.00078125, 0.000390625];  
 
+%Obtain RK4 for smallest dt
+dt_ref = dt_vec(end);
+t_ref = 0:dt_ref:5;
+N_ref = length(t_ref);
+x_ref = zeros(2, N_ref);
+x_ref(:,1) = [0; 0];
+
+%Reference RK4 solution at smallest time interal 
+for n = 1:N_ref-1
+    k1 = A * x_ref(:,n) + B * delta;
+    k2 = A * (x_ref(:,n) + 0.5*dt_ref*k1) + B * delta;
+    k3 = A * (x_ref(:,n) + 0.5*dt_ref*k2) + B * delta;
+    k4 = A * (x_ref(:,n) + dt_ref*k3) + B * delta;
+    x_ref(:,n+1) = x_ref(:,n) + (dt_ref/6)*(k1 + 2*k2 + 2*k3 + k4);
+end
+
 % Initialize vectors  
 euler_final = zeros(size(dt_vec));
 rk4_final   = zeros(size(dt_vec));
@@ -78,6 +94,9 @@ for i = 1:length(dt_vec)
 
     % Get the number of time points
     N = length(t);
+    
+    x_ref_interp = [interp1(t_ref, x_ref(1,:), t); 
+                    interp1(t_ref, x_ref(2,:), t)];
 
     %Initial Conditions
     x0 = [0; 0]; 
@@ -113,20 +132,16 @@ for i = 1:length(dt_vec)
         x_rk4(:,n+1) = x_rk4(:,n) + (h/6)*(k1 + 2*k2 + 2*k3 + k4);
     end
 
-    % Store norm of final state (v_y and psi)
-    euler_final(i) = norm(x_euler(:,end));
-    rk4_final(i)   = norm(x_rk4(:,end));
+    % L2 norm error across all time steps
+    euler_err(i) = sqrt(sum(vecnorm(x_euler - x_ref_interp).^2) / N);
+    rk4_err(i)   = sqrt(sum(vecnorm(x_rk4 - x_ref_interp).^2) / N);
 end
-
-% Error Calculation
-euler_err = abs(euler_final - euler_final(end));
-rk4_err   = abs(rk4_final - rk4_final(end));
 
 % Grid Independence Log-log plot
 figure;
 loglog(dt_vec, euler_err, 'r', 'DisplayName', 'Euler Error');
 hold on;
-loglog(dt_vec, rk4_err, 'b', 'DisplayName', 'RK4 Error');
+loglog(dt_vec, rk4_err, 'b', ' DisplayName', 'RK4 Error');
 xlabel('Time (s)');
 ylabel('Error');
 title('Grid Independence Check Euler vs RK4');
